@@ -25,6 +25,8 @@ Route::get('/logout', function () {
     return redirect('login');
 });
 
+Route::get('/register',[UserController::class,'register']);
+Route::post('/register',[UserController::class,'register_store'])->name('register_store');
 Route::post("/login",[UserController::class,'login']);
 Route::get("/",[ProductController::class,'index']);
 Route::get("detail/{id}",[ProductController::class,'detail']);
