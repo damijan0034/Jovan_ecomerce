@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
@@ -22,7 +23,7 @@ Route::get('/login', function () {
 
 Route::get('/logout', function () {
     Session::forget('user');
-    return redirect('login');
+    return redirect('/');
 });
 
 Route::get('/register',[UserController::class,'register']);
@@ -37,6 +38,8 @@ Route::get("removecart/{id}",[ProductController::class,'removeCart']);
 Route::get("ordernow",[ProductController::class,'orderNow']); 
 Route::post("orderplace",[ProductController::class,'orderPlace']);
 Route::get("myorders",[ProductController::class,'myOrders']);
+
+Route::post('/payment',[PaymentController::class,'pay'])->name('payment');
  
 
 
