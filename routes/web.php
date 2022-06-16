@@ -40,6 +40,8 @@ Route::post("orderplace",[ProductController::class,'orderPlace']);
 Route::get("myorders",[ProductController::class,'myOrders']);
 
 Route::post('/payment',[PaymentController::class,'pay'])->name('payment');
+Route::get('/success',[PaymentController::class,'success'])->name('success');
+Route::get('/error',[PaymentController::class,'error'])->name('error');
  
 
 
