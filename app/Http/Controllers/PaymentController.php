@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Omnipay\Omnipay;
 
 class PaymentController extends Controller
@@ -63,7 +65,15 @@ class PaymentController extends Controller
 
                 $payment->save();
 
-                return "Payment is successful.Your transaction Id is:" .$arr['id'];
+                $userId=Session::get('user')['id'];
+
+                $carts=Cart::where('user_id',$userId)->get();
+                
+                 foreach($carts as $cart){{ 
+                     $cart->delete();
+                  }}
+                // return "Payment is successful.Your transaction Id is:" .$arr['id'];
+                return redirect('/cartlist');
           
             }
             else {
