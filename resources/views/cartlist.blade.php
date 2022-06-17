@@ -1,5 +1,10 @@
 @extends('master')
 @section("content")
+@if (session('message'))
+<div class="alert alert-success">{{ session('message') }}</div>
+
+
+@endif
 <div class="custom-product">
      <div class="col-sm-10">
         <div class="trending-wrapper">

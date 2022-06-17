@@ -73,7 +73,7 @@ class PaymentController extends Controller
                      $cart->delete();
                   }}
                 // return "Payment is successful.Your transaction Id is:" .$arr['id'];
-                return redirect('/cartlist');
+                return redirect('/cartlist')->with('message','Payment is successful');
           
             }
             else {
